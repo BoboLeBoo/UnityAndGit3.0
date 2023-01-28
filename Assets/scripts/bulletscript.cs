@@ -20,7 +20,8 @@ public class bulletscript : MonoBehaviour
     {
 
         if (other.tag == "enemy")
-        {
+        {   
+            scoreManager.isntance.addPoint();
             other.gameObject.GetComponent<enemyscript>().death();
             Destroy(gameObject);
         }
