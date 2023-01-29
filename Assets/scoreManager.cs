@@ -39,6 +39,7 @@ public class scoreManager : MonoBehaviour
 
     public void removeMoney()
     {
+        currentMoney = PlayerPrefs.GetInt("currentMoney");
         PlayerPrefs.SetInt("currentMoney", currentMoney -= 60);
     }
 }
