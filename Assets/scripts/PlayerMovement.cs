@@ -32,5 +32,14 @@ public class PlayerMovement : MonoBehaviour
         rb.MovePosition(rb.position + movement * playerSpeed * Time.fixedDeltaTime);
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+
+        if (other.tag == "enemy")
+        {   
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            //Destroy(gameObject);
+        }
+    }
         
 }
