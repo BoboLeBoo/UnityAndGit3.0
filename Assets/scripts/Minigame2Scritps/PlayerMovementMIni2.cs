@@ -21,7 +21,6 @@ public class PlayerMovementMIni2 : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-
     private void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
