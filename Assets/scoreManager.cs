@@ -6,7 +6,7 @@ using TMPro;
 
 public class scoreManager : MonoBehaviour
 {
-    public static scoreManager isntance;
+    public static scoreManager instance;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI currentMoneyText;
 
@@ -15,7 +15,7 @@ public class scoreManager : MonoBehaviour
 
    private void Awake()
    {
-    isntance = this;
+    instance = this;
    }
 
     void Start()
@@ -31,5 +31,14 @@ public class scoreManager : MonoBehaviour
         scoreText.text = score.ToString() + "$";
         PlayerPrefs.SetInt("currentMoney", score + currentMoney);
         
+    }
+    public int getScore()
+    {
+        return score;
+    }
+
+    public void removeMoney()
+    {
+        PlayerPrefs.SetInt("currentMoney", currentMoney -= 60);
     }
 }

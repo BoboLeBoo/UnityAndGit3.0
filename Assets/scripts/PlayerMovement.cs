@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
         if (other.tag == "enemy")
         {   
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            scoreManager.instance.removeMoney();
             //Destroy(gameObject);
         }
     }

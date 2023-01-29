@@ -5,6 +5,7 @@ using UnityEngine;
 public class bulletscript : MonoBehaviour
 {
     // Start is called before the first frame update
+
     void Start()
     {
         
@@ -21,7 +22,7 @@ public class bulletscript : MonoBehaviour
 
         if (other.tag == "enemy")
         {   
-            scoreManager.isntance.addPoint();
+            scoreManager.instance.addPoint();
             other.gameObject.GetComponent<enemyscript>().death();
             Destroy(gameObject);
         }
