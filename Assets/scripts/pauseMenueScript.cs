@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class pauseMenueScript : MonoBehaviour
 {
+    private int sceneBuildIdx = 1;
  [SerializeField] 
  GameObject pauseMenue;
 
@@ -25,4 +26,11 @@ public class pauseMenueScript : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
     }
+
+    public void retry()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(sceneBuildIdx, LoadSceneMode.Single);
+    }
+
 }
