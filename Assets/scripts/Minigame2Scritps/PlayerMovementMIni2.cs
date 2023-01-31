@@ -5,14 +5,13 @@ using UnityEngine.Rendering;
 
 public class PlayerMovementMIni2 : MonoBehaviour
 {
-    [SerializeField] private float speed;
+    [SerializeField] private float movementSpeed;
     [SerializeField] private float jump_height;
 
     private bool grounded;
 
     private Rigidbody2D body;
     private Animator anim;
-    
 
     private void Awake()
     {
@@ -24,7 +23,7 @@ public class PlayerMovementMIni2 : MonoBehaviour
     private void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
-        body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+        body.velocity = new Vector2(horizontalInput * movementSpeed, body.velocity.y);
 
         // Flip player when moving in different directions
         if(horizontalInput > 0.01f)
