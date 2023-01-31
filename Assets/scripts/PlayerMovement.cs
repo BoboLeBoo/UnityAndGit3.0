@@ -11,6 +11,9 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     private int sceneBuildIdx = 0;
 
+     [SerializeField] 
+    GameObject EndOfGameMenue;
+
 
     // Update is called once per frame
 
@@ -37,8 +40,10 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.tag == "enemy")
         {   
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             scoreManager.instance.removeMoney();
+            EndOfGameMenue.SetActive(true);
+            Time.timeScale = 0f;
             //Destroy(gameObject);
         }
     }
