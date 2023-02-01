@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 public class LevelMove : MonoBehaviour
 {
 
-    private int sceneBuildIdx = 1;
+    private int sceneBuildIdxmini1 = 1;
+    private int sceneBuildIdxmini3 = 3;
+
     
 
     void Start()
@@ -20,8 +22,13 @@ public class LevelMove : MonoBehaviour
         if (other.GetComponent<PlayerMoverObj>())
         {
             Screen.SetResolution(540, 960, false);
-            SceneManager.LoadScene(sceneBuildIdx, LoadSceneMode.Single);
+            SceneManager.LoadScene(sceneBuildIdxmini1, LoadSceneMode.Single);
             
+        }
+
+        if(other.GetComponent <playerMoverMinigame3>())
+        {
+            SceneManager.LoadScene(sceneBuildIdxmini3, LoadSceneMode.Single);
         }
     }
 
