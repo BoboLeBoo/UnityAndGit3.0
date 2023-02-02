@@ -66,7 +66,7 @@ public class PlayerMovementMIni2 : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "platform")
         {
             grounded = true;
             lastTeleport = "";
