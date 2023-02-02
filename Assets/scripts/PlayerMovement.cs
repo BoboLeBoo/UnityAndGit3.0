@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float playerSpeed = 5f;
     Vector2 movement;
     public Rigidbody2D rb;
-    private int sceneBuildIdx = 0;
+   
 
      [SerializeField] 
     GameObject EndOfGameMenue;

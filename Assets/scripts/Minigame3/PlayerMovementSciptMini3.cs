@@ -4,27 +4,25 @@ using UnityEngine;
 
 public class PlayerMovementSciptMini3 : MonoBehaviour
 {
-    public float playerSpeed;
-    [SerializeField]
-    private Rigidbody2D rb; 
-    private Vector2 movement;
+  
+
+    [SerializeField] private Rigidbody2D player;
     
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.L))
+        float dirX = Input.GetAxisRaw("Horizontal");
+
+        player.velocity = new Vector2(dirX * 7f, player.velocity.y);
+
+        if (Input.GetButtonDown("Jump") == true)
         {
-            Debug.Log("Jump");
-            GetComponent<Rigidbody2D>().velocity = new Vector3(0,7,0);
+            player.velocity = new Vector2(player.velocity.x,14);
+     
+            
         }
-        movement.x = Input.GetAxisRaw("Horizontal");
   
     }
 
-    void FixedUpdate()
-    {
-
-        rb.MovePosition(rb.position + movement * playerSpeed * Time.fixedDeltaTime);
-    }
 
 }

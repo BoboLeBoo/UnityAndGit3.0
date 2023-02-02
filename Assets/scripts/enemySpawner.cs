@@ -7,9 +7,9 @@ public class enemySpawner : MonoBehaviour
 {
     private int score = 0;
 
-    [SerializeField]
     
-    private GameObject enemy; 
+    
+    [SerializeField] private GameObject enemy; 
     private int counter;
     private float timedelay = 8f;
 
@@ -44,6 +44,8 @@ public class enemySpawner : MonoBehaviour
         }
         Destroy(newEnemy,timedelay);
     }
+
+
 
 
 
