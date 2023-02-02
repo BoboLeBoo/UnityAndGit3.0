@@ -24,10 +24,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
-        if (Input.GetKeyUp(KeyCode.L))
-        {
-            SceneManager.LoadScene(sceneBuildIdx, LoadSceneMode.Single);
-        }
+  
     }
 
     void FixedUpdate()
