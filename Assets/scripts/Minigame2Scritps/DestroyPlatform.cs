@@ -23,6 +23,10 @@ public class DestroyPlatform : MonoBehaviour
             Destroy(other.gameObject);
         }
         
+        if(other.gameObject.name == "Player")
+        {
+            Destroy(other.gameObject);
+        }
     }
 
 }
