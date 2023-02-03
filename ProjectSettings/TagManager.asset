@@ -9,6 +9,7 @@ TagManager:
   - TeleportBorder
   - platform
   - StarterPlatform
+  - CollectableItem
   layers:
   - Default
   - TransparentFX
