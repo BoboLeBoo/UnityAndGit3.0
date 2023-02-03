@@ -7,15 +7,21 @@ public class ItemCollector : MonoBehaviour
 {
     private int melons = 0;
     [SerializeField] private Text melonsTxt;
+    private Animator anim;
+  
+    
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "CollectableItem")
         {
-            Destroy(other.gameObject);
+            anim = other.GetComponent<Animator>();
+            anim.SetBool("IsCollected", true);
             melons ++;
             melonsTxt.text = "Melons  " + melons;
+            Destroy(other.gameObject, 0.3f);
         }
     }
+
 
 }
