@@ -16,6 +16,7 @@ public class PlayerMovementMIni2 : MonoBehaviour
 
     private bool grounded;
     private string lastTeleport = "";
+    private float lastFacingDireciton;
 
     private Rigidbody2D body;
     private Animator anim;
@@ -69,23 +70,27 @@ public class PlayerMovementMIni2 : MonoBehaviour
         if (collision.gameObject.tag == "platform")
         {
             grounded = true;
-            lastTeleport = "";
+            //lastTeleport = "";
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
+        //if(this.transform.)
         // this teleports the player to the other side of the screen, when he leaves on one side
         // add changed direction method, so that u can pass by changing direction of the player
-        if (collision.gameObject.name == TeleborderL.name && collision.gameObject.name != lastTeleport || collision.gameObject.name == "")
+        if (collision.gameObject.name == TeleborderL.name)// && collision.gameObject.name != lastTeleport || collision.gameObject.name == ""
         {
-            body.position = new Vector3(TeleborderR.transform.position.x, TeleborderR.transform.position.y, movementSpeed);
+            body.position = new Vector3(TeleborderR.transform.position.x - 0.2f, this.transform.position.y, movementSpeed);
             lastTeleport = TeleborderR.name;
+            
         }
-        if (collision.gameObject.name == TeleborderR.name && collision.gameObject.name != lastTeleport || collision.gameObject.name == "")
+        if (collision.gameObject.name == TeleborderR.name) // && collision.gameObject.name != lastTeleport || collision.gameObject.name == ""
         {
-            body.position = new Vector3(TeleborderL.transform.position.x, TeleborderL.transform.position.y, movementSpeed);
+            body.position = new Vector3(TeleborderL.transform.position.x + 0.2f, this.transform.position.y, movementSpeed);
             lastTeleport = TeleborderL.name;
+            
         }
     }
 }
