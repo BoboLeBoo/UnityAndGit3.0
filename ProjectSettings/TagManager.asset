@@ -10,6 +10,7 @@ TagManager:
   - platform
   - StarterPlatform
   - CollectableItem
+  - Trap
   layers:
   - Default
   - TransparentFX

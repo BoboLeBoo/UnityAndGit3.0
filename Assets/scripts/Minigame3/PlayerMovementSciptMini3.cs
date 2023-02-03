@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovementSciptMini3 : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class PlayerMovementSciptMini3 : MonoBehaviour
 
     [SerializeField] private Rigidbody2D player;
     [SerializeField] private BoxCollider2D playerCollider;
+    [SerializeField] private GameObject blood;
     [SerializeField] private LayerMask jumpableGround;
     private Animator anim;
     private float dirX = 0;
@@ -78,6 +80,23 @@ public class PlayerMovementSciptMini3 : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size, 0f , Vector2.down, .1f, jumpableGround);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Trap"))
+        {   
+            Instantiate(blood , transform.position, Quaternion.identity);
+            player.bodyType = RigidbodyType2D.Static;
+            sprite.enabled = false;
+            Invoke("RestartLevel", 2);
+            
+        }
+    }
+
+    private void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 }
