@@ -1,35 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    [SerializeField] private GameObject platformLongPrefab;
-    [SerializeField] private GameObject platformMiddlePrefab;
-    [SerializeField] private GameObject platformShortPrefab;
+    [SerializeField] private GameObject asteroidBigPrefab;
+    [SerializeField] private GameObject asteroidMiddlePrefab;
+    [SerializeField] private GameObject asteroidSmallPrefab;
 
     private float platformInterval = 1.5f;
     private Vector2 screenBounds;
 
     private void Start()
     {
-        //StartCoroutine(spawnPlatform(platformInterval, platformShortPrefab));
-        StartCoroutine(spawnPlatform(platformInterval, platformMiddlePrefab));
-        //StartCoroutine(spawnPlatform(platformInterval, platformLongPrefab));
+        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+        StartCoroutine(spawnAsteroidWaves());
     }
 
     private void Update()
     {
-        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-
     }
 
-    private IEnumerator spawnPlatform(float interval, GameObject platform)
+    private void spawnAsteroids()
     {
-        yield return new WaitForSeconds(interval);
-        GameObject newPlatform = Instantiate(platform, new Vector3(this.transform.position.x + Random.Range(-5f,5),this.transform.position.y + Random.Range(-6f,6f),0),Quaternion.identity);
-        StartCoroutine(spawnPlatform(interval, newPlatform));
+        GameObject asteroid = Instantiate(asteroidSmallPrefab) as GameObject;
+        asteroid.transform.position = new Vector2(Random.Range(-screenBounds.x, screenBounds.x), screenBounds.y * 2);
     }
-
+    private IEnumerator spawnAsteroidWaves()
+    {
+        while(true) 
+        {
+            yield return new WaitForSeconds(platformInterval);
+            spawnAsteroids();
+        }
+        //GameObject newPlatform = Instantiate(platform, new Vector3(this.transform.position.x + Random.Range(-5f,5),this.transform.position.y + Random.Range(-6f,6f),0),Quaternion.identity);
+        //StartCoroutine(spawnPlatform(interval, newPlatform));
+    }
 }

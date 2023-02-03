@@ -18,8 +18,12 @@ public class DestroyPlatform : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log(other.gameObject.name);
         if (other.gameObject.CompareTag("platform"))
+        {
+            Destroy(other.gameObject);
+        }
+        
+        if(other.gameObject.name == "Player")
         {
             Destroy(other.gameObject);
         }
