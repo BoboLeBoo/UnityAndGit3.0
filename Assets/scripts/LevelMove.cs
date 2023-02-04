@@ -7,6 +7,7 @@ public class LevelMove : MonoBehaviour
 {
 
     private int sceneBuildIdxmini1 = 1;
+    private int sceneBuildIdxmini2 = 2;
     private int sceneBuildIdxmini3 = 3;
 
     
@@ -26,7 +27,15 @@ public class LevelMove : MonoBehaviour
             
         }
 
-        if(other.GetComponent <playerMoverMinigame3>())
+        if (other.GetComponent<Minigame2>())
+        {
+            Screen.SetResolution(540, 960, false);
+            SceneManager.LoadScene(sceneBuildIdxmini2, LoadSceneMode.Single);
+
+        }
+
+
+        if (other.GetComponent <playerMoverMinigame3>())
         {
             SceneManager.LoadScene(sceneBuildIdxmini3, LoadSceneMode.Single);
         }
