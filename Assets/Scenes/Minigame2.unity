@@ -586,7 +586,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.322448
+  orthographic size: 5.602046
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -846,6 +846,8 @@ MonoBehaviour:
     type: 3}
   asteroidSmallPrefab: {fileID: 1829189280640820382, guid: 97fc4a6e44a6aed4a9f7e4f0a4e48bc3,
     type: 3}
+  teleborderL: {fileID: 464029129}
+  teleborderR: {fileID: 222072021}
 --- !u!1 &1407154750
 GameObject:
   m_ObjectHideFlags: 0
@@ -932,7 +934,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.28, y: 0.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -965,7 +967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9424997c6cd9b264e9b3f771577815f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  launcherPower: 20
+  launcherPower: 30
 --- !u!68 &1407154755
 EdgeCollider2D:
   m_ObjectHideFlags: 0
