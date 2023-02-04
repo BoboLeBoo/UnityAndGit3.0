@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerMovementSciptMini3 : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class PlayerMovementSciptMini3 : MonoBehaviour
     private  enum MovementState{ idle, running, jumping, falling  }
     [SerializeField] private AudioSource JumpSound;
     [SerializeField] private AudioSource DeathSound;
+    [SerializeField] private Text DeathTxt;
+    private int deaths = 0;
    
     
 
@@ -26,6 +29,9 @@ public class PlayerMovementSciptMini3 : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
+
+        deaths = PlayerPrefs.GetInt("deaths");
+        DeathTxt.text = "Deaths: " + deaths.ToString();
     }
 
     void Update()
@@ -91,6 +97,8 @@ public class PlayerMovementSciptMini3 : MonoBehaviour
         {   
             Instantiate(blood , transform.position, Quaternion.identity);
             DeathSound.Play();
+            deaths += 1;
+            PlayerPrefs.SetInt("deaths", deaths);
             player.bodyType = RigidbodyType2D.Static;
             sprite.enabled = false;
             Invoke("RestartLevel", 2);

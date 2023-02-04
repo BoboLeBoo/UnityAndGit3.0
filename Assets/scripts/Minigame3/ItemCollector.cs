@@ -7,6 +7,7 @@ public class ItemCollector : MonoBehaviour
 {
     private int melons = 0;
     [SerializeField] private Text melonsTxt;
+
     private Animator anim;
     [SerializeField] AudioSource collectionSound;
   
@@ -20,7 +21,7 @@ public class ItemCollector : MonoBehaviour
             anim.SetBool("IsCollected", true);
             collectionSound.Play();
             melons ++;
-            melonsTxt.text = "Melons  " + melons;
+            melonsTxt.text = "Melons " + melons + "/14";
             Destroy(other.gameObject, 0.3f);
         }
     }
