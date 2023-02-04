@@ -9,25 +9,29 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private GameObject asteroidBigPrefab;
     [SerializeField] private GameObject asteroidMiddlePrefab;
     [SerializeField] private GameObject asteroidSmallPrefab;
+    [SerializeField] private GameObject teleborderL;
+    [SerializeField] private GameObject teleborderR;
 
-    private float platformInterval = 1.5f;
+    private float platformInterval = 0.2f;
     private Vector2 screenBounds;
 
     private void Start()
     {
-        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         StartCoroutine(spawnAsteroidWaves());
     }
 
     private void Update()
     {
+        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+
     }
 
     private void spawnAsteroids()
     {
         GameObject asteroid = Instantiate(asteroidSmallPrefab) as GameObject;
-        asteroid.transform.position = new Vector2(Random.Range(-screenBounds.x, screenBounds.x), screenBounds.y * 2);
+        asteroid.transform.position = new Vector2(Random.Range(teleborderL.transform.position.x, teleborderR.transform.position.x), screenBounds.y + Random.Range(-8f,20f));
     }
+
     private IEnumerator spawnAsteroidWaves()
     {
         while(true) 
