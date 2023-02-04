@@ -17,6 +17,8 @@ public class PlayerMovementSciptMini3 : MonoBehaviour
     [SerializeField] private float moveSpeed = 7;
     [SerializeField] private float jumpForce = 14;
     private  enum MovementState{ idle, running, jumping, falling  }
+    [SerializeField] private AudioSource JumpSound;
+    [SerializeField] private AudioSource DeathSound;
    
     
 
@@ -34,6 +36,7 @@ public class PlayerMovementSciptMini3 : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && IsGrounded() == true)
         {
+            JumpSound.Play();
             player.velocity = new Vector2(player.velocity.x,jumpForce);
      
         }
@@ -87,6 +90,7 @@ public class PlayerMovementSciptMini3 : MonoBehaviour
         if (other.gameObject.CompareTag("Trap"))
         {   
             Instantiate(blood , transform.position, Quaternion.identity);
+            DeathSound.Play();
             player.bodyType = RigidbodyType2D.Static;
             sprite.enabled = false;
             Invoke("RestartLevel", 2);
