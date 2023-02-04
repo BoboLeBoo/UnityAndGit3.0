@@ -37,6 +37,7 @@ public class PlayerMovementSciptMini3 : MonoBehaviour
     void Update()
     {
         dirX = Input.GetAxisRaw("Horizontal");
+        
 
         player.velocity = new Vector2(dirX * moveSpeed, player.velocity.y);
 
