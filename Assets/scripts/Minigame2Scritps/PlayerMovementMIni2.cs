@@ -38,7 +38,7 @@ public class PlayerMovementMIni2 : MonoBehaviour
         if(horizontalInput > 0.01f)
         {
             transform.localScale = Vector3.one;
-            LaserGun.transform.localScale = Vector3.one;
+            //LaserGun.transform.localScale = Vector3.one;
         }
         else if (horizontalInput < -0.01f)
         {

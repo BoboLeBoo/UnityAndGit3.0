@@ -57,8 +57,6 @@ public class LaserControl : MonoBehaviour
             {
                 Destroy(asteroid);
             }
-               
-            
         }
     }
 
