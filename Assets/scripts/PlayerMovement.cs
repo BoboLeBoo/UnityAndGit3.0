@@ -14,13 +14,6 @@ public class PlayerMovement : MonoBehaviour
      [SerializeField] 
     GameObject EndOfGameMenue;
 
-
-    // Update is called once per frame
-
-    void Start()
-    {
-        
-    }
     void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
