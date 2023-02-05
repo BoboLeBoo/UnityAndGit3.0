@@ -13,6 +13,7 @@ public class PlayerMovementMIni2 : MonoBehaviour
     [SerializeField] private float jump_height;
     [SerializeField] public BoxCollider2D TeleborderL;
     [SerializeField] public BoxCollider2D TeleborderR;
+    [SerializeField] public GameObject LaserGun;
 
     private bool grounded;
     private string lastTeleport = "";
@@ -37,10 +38,12 @@ public class PlayerMovementMIni2 : MonoBehaviour
         if(horizontalInput > 0.01f)
         {
             transform.localScale = Vector3.one;
+            LaserGun.transform.localScale = Vector3.one;
         }
         else if (horizontalInput < -0.01f)
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            //transform.localScale = new Vector3(-1, 1, 1);
+            LaserGun.transform.localScale = Vector3.left;
         }
 
         if(Input.GetKey(KeyCode.Space) && grounded) 

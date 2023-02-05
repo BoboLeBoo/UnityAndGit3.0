@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DestroyPlatform : MonoBehaviour
 {
@@ -26,7 +27,12 @@ public class DestroyPlatform : MonoBehaviour
         if(other.gameObject.name == "Player")
         {
             Destroy(other.gameObject);
+            RestartLevel();
         }
+    }
+    private void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 }
