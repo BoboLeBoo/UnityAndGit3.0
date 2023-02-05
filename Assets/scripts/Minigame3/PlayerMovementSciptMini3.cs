@@ -20,6 +20,7 @@ public class PlayerMovementSciptMini3 : MonoBehaviour
     private  enum MovementState{ idle, running, jumping, falling  }
     [SerializeField] private AudioSource JumpSound;
     [SerializeField] private AudioSource DeathSound;
+    [SerializeField] private AudioSource FinishSound;
     [SerializeField] private Text DeathTxt;
     private int deaths = 0;
    
@@ -110,6 +111,21 @@ public class PlayerMovementSciptMini3 : MonoBehaviour
     private void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+       if (other.tag == "finish")
+       {
+            FinishSound.Play();
+            PlayerPrefs.SetInt("deaths", 0);
+            Invoke("LoadEndScene", 2);
+       }
+    }
+
+    private void LoadEndScene()
+    {
+        SceneManager.LoadScene(4,LoadSceneMode.Single);
     }
 
 }
