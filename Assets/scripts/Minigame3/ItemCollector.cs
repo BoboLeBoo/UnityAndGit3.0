@@ -11,7 +11,6 @@ public class ItemCollector : MonoBehaviour
     private Animator anim;
     [SerializeField] AudioSource collectionSound;
   
-    
 
     private void OnTriggerEnter2D(Collider2D other)
     {
